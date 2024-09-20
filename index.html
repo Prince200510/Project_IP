@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Restaurant</title>
 </head>
 <body>
     <div class="nav-bar">
-        <ul>
+        <button class="hamburger" id="hamburger">&#9776;</button> 
+        <ul id="navMenu">
             <li><a href="#">Home</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#services">Services</a></li>
@@ -19,16 +21,19 @@
             <li><button id="bookBtn">BOOK A TABLE</button></li>
             <script>
                 document.addEventListener("DOMContentLoaded", function() {
+                    const navMenu = document.getElementById("navMenu");  
+                    const hamburger = document.getElementById("hamburger");  
                     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                         anchor.addEventListener('click', function(e) {
                             e.preventDefault();
-                
+            
                             const target = document.querySelector(this.getAttribute('href'));
                             if (target) {
                                 target.scrollIntoView({
                                     behavior: 'smooth'
                                 });
                             }
+                            navMenu.classList.remove("show");
                         });
                     });
                     document.getElementById("bookBtn").addEventListener("click", function() {
@@ -38,38 +43,51 @@
                                 behavior: 'smooth'
                             });
                         }
+                        navMenu.classList.remove("show");
+                    });
+                    hamburger.addEventListener("click", function() {
+                        navMenu.classList.toggle("show");
+                    });
+
+                    window.addEventListener("scroll", function() {
+                        if (navMenu.classList.contains("show")) {
+                            navMenu.classList.remove("show");
+                        }
                     });
                 });
             </script>
+            
         </ul>
     </div>
     <div class="parent-home-container">
-        <img src="home3.jpeg">
-        <div class="child-home">
-            <h1>Welcome to Delightful Eats</h1>
-            <p>We are delighted to have you dine with us. At <span class="restaurant-name">Delightful Eats</span>, we strive to provide a memorable culinary experience for every guest.</p>
+        <img src="./asset/about3.jpeg">
+        <div data-aos="fade-in">
+            <div class="child-home">
+                <h1>Welcome to Delightful Eats</h1>
+                <p>We are delighted to have you dine with us. At <span class="restaurant-name">Delightful Eats</span>, we strive to provide a memorable culinary experience for every guest.</p>
+            </div>
         </div>
     </div>
     <h1 class="header-1">Our Food</h1>
     <div class="parent-food">
-        <div class="child-food">
-            <img src="pizza.jpeg">
+        <div class="child-food" data-aos="slide-right">
+            <img src="./asset/pizza.jpeg">
             <h1><i class="fas fa-pizza-slice"></i>Pizza</h1>
             <hr>
             <h2>Price: &#8377; 250<span> <del>&#8377;350</del></span></h2>
             <hr>
             <p>Indulge in flavor-filled perfection at our pizza paradise.</p>
         </div>
-        <div class="child-food">
-            <img src="burger.jpeg">
+        <div class="child-food" data-aos="slide-right">
+            <img src="./asset/burger.jpeg">
             <h1><i class="fas fa-hamburger"></i>Burger</h1>
             <hr>
             <h2>Price: &#8377; 120<span> <del>&#8377;235</del></span></h2>
             <hr>
             <p>Experience flavor-packed perfection in every bite at our burger haven.</p>
         </div>
-        <div class="child-food">
-            <img src="briyani.jpeg">
+        <div class="child-food" data-aos="slide-right">
+            <img src="./asset/briyani.jpeg">
             <h1><i class="fas fa-utensils"></i>Briyani</h1>
             <hr>
             <h2>Price: &#8377; 410<span> <del>&#8377;615</del></span></h2>
@@ -78,13 +96,13 @@
         </div>
     </div>
     <div class="parent-about" id="about">
-        <div class="child-about-image">
-            <img src="about1.jpeg">
-            <img src="about2.jpeg"><br>
-            <img src="about3.jpeg">
-            <img src="about4.jpeg">
+        <div class="child-about-image" data-aos="slide-right" data-aos-duration="1000">
+            <img src="./asset/about1.jpeg">
+            <img src="./asset/about2.jpeg"><br>
+            <img src="./asset/about3.jpeg">
+            <img src="./asset/about4.jpeg">
         </div>
-        <div class="child-about-content">
+        <div class="child-about-content" data-aos="slide-left" data-aos-duration="1000">
             <h1>About Us</h1>
             <h2>Welcome to <i class="fas fa-utensils"></i> Delightful Eats</h2>
             <p>Welcome to Delightful Eats, founded by owner Prince Maurya. Our passion for exceptional food and warm hospitality ensures a memorable dining experience for all our guests.</p>
@@ -96,7 +114,7 @@
             <button>READ MORE</button>
         </div>
     </div>
-    <div class="parent-header-food-menu" id="services">
+    <div class="parent-header-food-menu" id="services" data-aos="fade-in">
         <div class="child-header-food-menu">
             <h1>Food Menu</h1>
             <h2>Most Popluar Items</h2>
@@ -133,36 +151,36 @@
     </div>
     <div class="parent-food-menu">
         <div class="sub-parent-food-menu-details">
-            <div class="child-food-menu">
+            <div class="child-food-menu" data-aos="slide-up">
                 <div class="sub-child-food-menu-image">
-                    <img src="burger.jpeg">
+                    <img src="./asset/burger.jpeg">
                 </div>
                 <div class="sub-child-food-menu-content">
                     <h2><i class="fas fa-hamburger"></i>Veg Cheese Burger<span>&#8377; 120</span></h2><hr>
                     <p>Savor the goodness of a veggie-filled cheeseburger bite.</p>
                 </div>
             </div>
-            <div class="child-food-menu">
+            <div class="child-food-menu" data-aos="slide-up">
                 <div class="sub-child-food-menu-image">
-                    <img src="briyani.jpeg">
+                    <img src="./asset/briyani.jpeg">
                 </div>
                 <div class="sub-child-food-menu-content">
                     <h2><i class="fas fa-drumstick-bite"></i>Veg Panner Briyani<span>&#8377; 370</span></h2><hr>
                     <p>Savor the aromatic flavors of our signature a veg biryani.</p>
                 </div>
             </div>
-            <div class="child-food-menu">
+            <div class="child-food-menu" data-aos="slide-up">
                 <div class="sub-child-food-menu-image">
-                    <img src="sandwich.jpeg">
+                    <img src="./asset/sandwich.jpeg">
                 </div>
                 <div class="sub-child-food-menu-content">
                     <h2><i class="fas fa-bread-slice"></i>Veg Sandwich<span>&#8377; 180</span></h2><hr>
                     <p>Indulge delightful medley of flavors with our sandwiches.</p>
                 </div>
             </div>
-            <div class="child-food-menu">
+            <div class="child-food-menu" data-aos="slide-up">
                 <div class="sub-child-food-menu-image">
-                    <img src="masla_dosa.jpeg">
+                    <img src="./asset/masla_dosa.jpeg">
                 </div>
                 <div class="sub-child-food-menu-content">
                     <h2><i class="fas fa-utensils"></i>Masala Dosa<span>&#8377; 175</span></h2><hr>
@@ -171,36 +189,36 @@
             </div>
         </div>
         <div class="sub-parent-food-menu-details">
-            <div class="child-food-menu">
+            <div class="child-food-menu" data-aos="slide-up">
                 <div class="sub-child-food-menu-image">
-                    <img src="PunjabiThali.jpeg">
+                    <img src="./asset/PunjabiThali.jpeg">
                 </div>
                 <div class="sub-child-food-menu-content">
                     <h2><i class="fas fa-th"></i>Punjabi Thali<span>&#8377; 155</span></h2><hr>
                     <p>Delight in the rich and diverse flavors of a our Punjabi thali.</p>
                 </div>
             </div>
-            <div class="child-food-menu">
+            <div class="child-food-menu" data-aos="slide-up">
                 <div class="sub-child-food-menu-image">
-                    <img src="LucknowiFood.jpeg">
+                    <img src="./asset/LucknowiFood.jpeg">
                 </div>
                 <div class="sub-child-food-menu-content">
                     <h2><i class="fas fa-crown"></i>Lucknowi Food<span>&#8377; 215</span></h2><hr>
                     <p>Embark on culinary journey with the royal flavors Lucknow.</p>
                 </div>
             </div>
-            <div class="child-food-menu">
+            <div class="child-food-menu" data-aos="slide-up">
                 <div class="sub-child-food-menu-image">
-                    <img src="VegPaneerHandi.jpeg">
+                    <img src="./asset/VegPaneerHandi.jpeg">
                 </div>
                 <div class="sub-child-food-menu-content">
                     <h2><i class="fas fa-hand-holding"></i>Veg Paneer Handi<span>&#8377; 345</span></h2><hr>
                     <p>Treat yourself to creamy delight with our veg paneer handi.</p>
                 </div>
             </div>
-            <div class="child-food-menu">
+            <div class="child-food-menu" data-aos="slide-up">
                 <div class="sub-child-food-menu-image">
-                    <img src="SouthIndianThali.jpeg">
+                    <img src="./asset/SouthIndianThali.jpeg">
                 </div>
                 <div class="sub-child-food-menu-content">
                     <h2><i class="fas fa-leaf"></i>South Indian Thali<span>&#8377; 275</span></h2><hr>
@@ -210,41 +228,41 @@
         </div>
     </div>
     <div class="parent-header-food-menu">
-        <div class="child-header-food-menu">
+        <div class="child-header-food-menu" data-aos="fade-in">
             <h1>Portfolio</h1>
         </div>
     </div>
     <div class="parent-portfolio" id="portfolio">
-        <div class="child-portfolio">
-            <img src="home1.jpeg">
+        <div class="child-portfolio" data-aos="slide-right">
+            <img src="./asset/home1.jpeg">
         </div>
-        <div class="child-portfolio">
-            <img src="home2.jpeg">
+        <div class="child-portfolio" data-aos="slide-right">
+            <img src="./asset/home2.jpeg">
         </div>
-        <div class="child-portfolio">
-            <img src="home3.jpeg">
+        <div class="child-portfolio" data-aos="slide-right">
+            <img src="./asset/home3.jpeg">
         </div>
-        <div class="child-portfolio">
-            <img src="about1.jpeg">
+        <div class="child-portfolio" data-aos="slide-right">
+            <img src="./asset/about1.jpeg">
         </div>
-        <div class="child-portfolio">
-            <img src="sandwich.jpeg">
+        <div class="child-portfolio" data-aos="slide-right">
+            <img src="./asset/sandwich.jpeg">
         </div>
-        <div class="child-portfolio">
-            <img src="masla_dosa.jpeg">
+        <div class="child-portfolio" data-aos="slide-right">
+            <img src="./asset/masla_dosa.jpeg">
         </div>
-        <div class="child-portfolio">
-            <img src="burger.jpeg">
+        <div class="child-portfolio" data-aos="slide-right">
+            <img src="./asset/burger.jpeg">
         </div>
-        <div class="child-portfolio">
-            <img src="pizza.jpeg">
+        <div class="child-portfolio" data-aos="slide-right">
+            <img src="./asset/pizza.jpeg">
         </div>
     </div>
     <div class="parent-book-table">
-        <div class="child-book-table">
-            <img src="about1.jpeg">
+        <div class="child-book-table" data-aos="slide-right">
+            <img src="./asset/about1.jpeg">
         </div>
-        <div class="child-book-table" id="bookatable">
+        <div class="child-book-table" id="bookatable" data-aos="slide-left">
             <h1>Reservation</h1>
             <h2>Book A Table Online</h2>
             <div class="sub-child-book-table">
@@ -306,5 +324,7 @@
       <div class="main-footer">
         <h2>&copy; All rights reserved - Delightful Eats</h2>
       </div>      
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script>AOS.init();</script>
 </body>
 </html>
