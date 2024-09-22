@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #efe8f7;
+    overflow-x: hidden;
 }
 .nav-bar{
     display: flex;
@@ -574,6 +575,50 @@ footer{
     * {
       overflow-x:hidden;
     }
+    .parent-home-container img{
+        height: 300px;
+    }
+    .child-food{
+        width: 300px;
+        margin-left: 20px;
+    }
+    .parent-about .child-about-image img{
+        display: flex;
+        justify-content: center;
+        width: 300px;
+    }
+    .parent-about .child-about-image img:nth-child(2){
+        margin-bottom: -18px;
+    }
+    .parent-about .child-about-content {
+      margin-right: 40px;
+    }
+    .parent-about .child-about-content .sub-child-about-content h3{
+        margin: 5px;
+    }
+    .parent-about .child-about-content button{
+        margin-top: 10px;
+    }
+    .parent-header-food-menu {
+        margin: 20px;
+    }
+    .global-sub-parent-header-food-menu  {
+        justify-content: center;
+        margin: 30px;
+    }
+    .parent-food-menu .child-food-menu{
+      justify-content: center;
+    }
+    .sub-parent-food-menu-details{
+        overflow-y: hidden;
+    }
+    .parent-food-menu .child-food-menu .sub-child-food-menu-image img{
+        width: 200px;
+        height: 100px;
+    }
+    .parent-about .child-about-content p{
+        text-align: justify;
+    }
     .parent-home-container .child-home h1{
         text-align: center;
     }
@@ -584,6 +629,21 @@ footer{
         grid-template-columns: repeat(1, 1fr); 
         margin-left: 10px; 
         margin-right: 10px; 
+    }
+    .footer1 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .footer1 p {
+        text-align: justify;
+    }
+    .footer-social-media-icon{
+        justify-content: center;
+        font-size: 25px;
+        margin: 0px;
+    }
+    .footer2 {
+        margin: 0px;
     }
 }
 @media (max-width: 768px) {
